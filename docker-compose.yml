@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  mongo:
+    image: mongo:latest  # Use a MongoDB image
+    restart : always
+    volumes:
+      - mongo-data:/data/db  # Optional: Persist MongoDB data (create a directory named `mongo-data` on your host)
+
+  app:
+    build: 
+      context: .  # Adjust the build context to your project folder
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    ports:
+      - "3000:3000"  # Map container port 3000 to host port 3000
+    depends_on:
+      - mongo
+
+  
+volumes:
+  mongo-data:
