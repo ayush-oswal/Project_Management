@@ -25,7 +25,7 @@ import { useRouter } from "next/navigation";
 import { GET_ALL_PROJECTS, GET_EMPLOYEE } from '@/queries';
 import Link from 'next/link';
 import { ADD_CLIENT, ADD_EMPLOYEE } from '@/mutations';
-import ProjectCard from '@/Components/ProjectCard';
+import ProjectCard from '@/components/ProjectCard';
 
 
 interface Project {

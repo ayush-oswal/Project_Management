@@ -26,10 +26,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ id, title, status }) => {
   }
 
   return (
-    <div className={`p-4 mb-4 text-white rounded-md shadow-md ${color} border border-gray-300`}>
-      <h2 className="text-3xl font-semibold">{title}</h2>
-      <p className="text-xs">Status: {status}</p>
-    </div>
+    <div className={`rounded-md ${color}`} >
+      <div className="p-4 mb-4 h-36 w-48 text-white rounded-md shadow-md border border-gray-300">
+        <h2 className="text-3xl font-semibold">{title}</h2>
+        <p className="text-xs">Status: {status}</p>
+      </div>
+    </div> 
   );
 };
 
