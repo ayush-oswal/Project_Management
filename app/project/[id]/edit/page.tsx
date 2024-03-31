@@ -2,7 +2,7 @@
 
 "use client"
 
-import ProjectForm from '@/components/ProjectForm';
+import ProjectForm from '@/Components/ProjectForm';
 import { GET_PROJECT } from '@/queries';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
