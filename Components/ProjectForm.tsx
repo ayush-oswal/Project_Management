@@ -34,7 +34,7 @@ const ProjectForm= ({
 } : ProjectFormProps) => {
   const router = useRouter();
   const [title, setTitle] = useState(initialTitle);
-  if(id && !title) router.push("/dashboard")
+  if(id && !initialTitle) router.push("/dashboard")
   const [description, setDescription] = useState(initialDescription);
   const [employees, setEmployees] = useState<string[]>([]);
   const [clients, setClients] = useState<string[]>([]);

@@ -164,10 +164,15 @@ const Page = () => {
     setSearchResults(filteredProjects);
   }
 
+  const handleLogout = () => {
+    localStorage.setItem("name", "");
+    router.push("/");
+  };
+
   return (
     <div className='w-full min-h-95vh flex flex-col bg-white p-4 rounded-md opacity-85'>
       <Toaster />
-      <div className={`fixed pr-20 z-50 w-full flex items-center ${isAdmin ? 'justify-between' : 'justify-center'}`}>
+      <div className={`fixed pr-20 z-50 w-full flex gap-3 items-center ${isAdmin ? 'justify-between' : 'justify-center'}`}>
         <div className="md:hidden">
           {isAdmin && (
             <button className="block text-gray-500 m-2 focus:outline-none" onClick={() => setDrawerOpen(true)}>
@@ -175,9 +180,9 @@ const Page = () => {
             </button>
           )}
         </div>
-        <div className="hidden md:block">
+        <div className="hidden md:block w-fit">
           {isAdmin && (
-            <div>
+            <div className='w-fit'>
               <button
                 className='m-2 p-2 bg-lime-500 text-white rounded-md'
                 onClick={() => setClientModalOpen(true)}
@@ -193,7 +198,7 @@ const Page = () => {
             </div>
           )}
         </div>
-        <div className={`lg:w-6/12 ${!isAdmin && 'text-center'}`}>
+        <div className={`lg:w-5/12 ${!isAdmin && 'text-center'}`}>
           <input
             className='p-2 w-full box-border border-black rounded-md bg-slate-300'
             type='text'
@@ -208,20 +213,20 @@ const Page = () => {
             </Link>
           </div>
         )}
+        <div className={`${isAdmin&&'hidden'} max-w-fit mr-3 md:block ml-auto`}>
+          <Button onClick={handleLogout}>
+            Logout
+          </Button>
+        </div>
       </div>
-        {/* render projectcard with colour based on status */}
+      {/* render projectcard with colour based on status */}
       <div className='w-full min-h-full p-10 pt-32 flex flex-wrap gap-6 justify-center'>
-      {(searchResults.length > 0 ? searchResults : projects).map(project => (
+        {(searchResults.length > 0 ? searchResults : projects).map(project => (
           <Link key={project.id} href={`/project/${project.id}`}>
-              <ProjectCard id={project.id} title={project.title} status={project.status} />  
+            <ProjectCard id={project.id} title={project.title} status={project.status} />  
           </Link>
         ))}
       </div>
-
-
-
-
-      
 
       {/* Drawer */}
       <Drawer
@@ -232,7 +237,7 @@ const Page = () => {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader>Add Items</DrawerHeader>
+          <DrawerHeader>Menu</DrawerHeader>
 
           <DrawerBody>
             {isAdmin && (
@@ -254,6 +259,11 @@ const Page = () => {
                 <Link href={"/project"} className='m-2 p-2 pr-3 pl-3 w-fit font-bold bg-red-500 text-white rounded-md block'>
                   + New Project
                 </Link>
+                <div className="mt-4">
+                  <Button onClick={handleLogout} className="w-full">
+                    Logout
+                  </Button>
+                </div>
               </>
             )}
           </DrawerBody>
