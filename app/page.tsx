@@ -44,7 +44,7 @@ export default function Home() {
   };
 
   return (
-    <main className="p-5 mt-44 bg-white opacity-85 rounded-md w-full sm:w-3/5 max-w-md">
+    <main className="p-5 mt-44 bg-white opacity-85 text-center rounded-md w-full sm:w-3/5 max-w-md">
       <Toaster />
       <div className="flex flex-col gap-3">
         <div className="text-xl text-center">
@@ -66,6 +66,9 @@ export default function Home() {
                 }
               
             </form>
+        </div>
+        <div>
+          Use "Admin" as username and password for admin login.
         </div>
       </div>
     </main>
